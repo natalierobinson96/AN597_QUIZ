@@ -1,0 +1,22 @@
+---
+title: "Quiz1"
+author: "Natalie Robinson"
+date: "September 26, 2017"
+output: html_document
+---
+
+Import zombies.csv
+```{r}
+library(curl)
+f <- f <- curl("https://raw.githubusercontent.com/fuzzyatelin/fuzzyatelin.github.io/master/AN597_Fall17/zombies.csv")
+d <- read.csv(f, header = TRUE, sep = ",", stringsAsFactors = FALSE)
+head(d)
+```
+
+create a new data frame with the first/last name of all female survivors using 'piping' %>%
+```{r}
+library(dplyr)
+newd <- filter(d, gender == "Female") %>%
+  select(first_name, last_name)
+newd
+```
